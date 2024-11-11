@@ -1,6 +1,6 @@
 "use client"
 import React, { useState, useEffect } from 'react';
-import {  Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import Link from 'next/link';
 
 const Navbar = () => {
@@ -20,7 +20,7 @@ const Navbar = () => {
 
   // Close sidebar when clicking outside
   useEffect(() => {
-    const handleClickOutside = (event : any) => {
+    const handleClickOutside = (event: any) => {
       const sidebar = document.getElementById('sidebar');
       const menuButton = document.getElementById('menu-button');
       
@@ -33,13 +33,31 @@ const Navbar = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [isOpen]);
 
+  // Handle smooth scrolling
+  const handleScroll = (path: string) => {
+    setIsOpen(false); // Close mobile menu if open
+    
+    // For anchor links, use smooth scrolling
+    if (path.startsWith('#')) {
+      const targetId = path.replace('#', '');
+      const element = document.getElementById(targetId);
+      
+      if (element) {
+        element.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    }
+  };
+
   const navItems = [
     { name: 'Home', path: '/' },
-    { name: 'Donation', path: '/' },
-    { name: 'Mission', path: '#' },
-    { name: 'Volunteer', path: '#' },
+    { name: 'Donation', path: '#donation' },
+    { name: 'Mission', path: '#mission' },
+    { name: 'Volunteer', path: '#volunteer' },
     { name: 'About us', path: '/about' },
-    { name: 'News', path: '#' },
+    { name: 'News', path: '#news' },
   ];
 
   return (
@@ -48,24 +66,44 @@ const Navbar = () => {
         <div className="flex flex-row justify-between items-center py-8 px-4 text-white">
           {/* NGO Title */}
           <div>
-            <Link className="text-2xl font-bold cursor-pointer" href="/">Jhunja Divyang Institute and Training Center </Link>
+            <Link className="text-2xl font-bold cursor-pointer" href="/">
+              Zunj Divyang Institute and Training Center
+            </Link>
           </div>
 
           {/* Desktop Navigation Links */}
           <div className="hidden md:flex flex-row gap-9">
             {navItems.map((item) => (
-              <a
-                key={item.name}
-                href={item.path}
-                className="hover:text-blue-200 transition-colors"
-              >
-                {item.name}
-              </a>
+              item.path.startsWith('#') ? (
+                <a
+                  key={item.name}
+                  href={item.path}
+                  className="hover:text-blue-200 transition-colors"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleScroll(item.path);
+                  }}
+                >
+                  {item.name}
+                </a>
+              ) : (
+                <Link
+                  key={item.name}
+                  href={item.path}
+                  className="hover:text-blue-200 transition-colors"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {item.name}
+                </Link>
+              )
             ))}
           </div>
 
           {/* Donate Button (Desktop) */}
-          <button className="hidden md:block px-5 py-2 rounded-md border border-white hover:bg-white hover:text-blue-600 transition-colors">
+          <button 
+            className="hidden md:block px-5 py-2 rounded-md border border-white hover:bg-white hover:text-blue-600 transition-colors"
+            onClick={() => handleScroll('#donation')}
+          >
             Donate Now
           </button>
 
@@ -99,20 +137,37 @@ const Navbar = () => {
             {/* Navigation Items */}
             <div className="flex flex-col">
               {navItems.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.path}
-                  className="px-6 py-4 text-white hover:bg-[#1e6154]  transition-colors"
-                  onClick={() => setIsOpen(false)}
-                >
-                  {item.name}
-                </a>
+                item.path.startsWith('#') ? (
+                  <a
+                    key={item.name}
+                    href={item.path}
+                    className="px-6 py-4 text-white hover:bg-[#1e6154] transition-colors"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleScroll(item.path);
+                    }}
+                  >
+                    {item.name}
+                  </a>
+                ) : (
+                  <Link
+                    key={item.name}
+                    href={item.path}
+                    className="px-6 py-4 text-white hover:bg-[#1e6154] transition-colors"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {item.name}
+                  </Link>
+                )
               ))}
             </div>
 
             {/* Mobile Donate Button */}
             <div className="mt-auto p-6">
-              <button className="w-full px-5 py-2 rounded-md border border-white text-white hover:bg-white hover:text-[#0D7C66]  transition-colors">
+              <button 
+                className="w-full px-5 py-2 rounded-md border border-white text-white hover:bg-white hover:text-[#0D7C66] transition-colors"
+                onClick={() => handleScroll('#donation')}
+              >
                 Donate Now
               </button>
             </div>

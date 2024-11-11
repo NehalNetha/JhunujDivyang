@@ -2,7 +2,7 @@ import { Heart } from "lucide-react";
 
 const Donation = () => {
   return (
-    <div className="mb-32">
+    <div className="mb-32" id="donation">
       <div className="w-full bg-emerald-700 py-12 px-4">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12">
           {/* Left content section */}
@@ -10,7 +10,7 @@ const Donation = () => {
             <h2 className="text-3xl md:text-5xl font-bold text-white leading-tight">
               You can make a difference, so why don't you
             </h2>
-            <p className="text-white text-lg max-w-xl">
+            <p className="text-wxhite text-lg max-w-xl">
               This is some random big text I need to add later. I'll see what to
               add here later. Let's test this first.
             </p>

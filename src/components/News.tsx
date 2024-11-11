@@ -45,7 +45,7 @@ const NewsShowcase = () => {
     {
       id: 5,
       title: "Cyle Redistribution",
-      description: "Today little students were distributed cycles, at this time  every jhunjh divyang institution's office bearer and social worker Praveen Mahajan were present",
+      description: "Today little students were distributed cycles, at this time  every Zunjh divyang institution's office bearer and social worker Praveen Mahajan were present",
       image: "/distributingCycles.png",
       date: "2023"
     }
@@ -71,7 +71,7 @@ const NewsShowcase = () => {
   }
 
   return (
-    <div className="w-full max-w-7xl mx-auto px-4 py-8">
+    <div className="w-full max-w-7xl mx-auto px-4 py-8" id='news'>
       <div className="text-center mb-8">
         <h2 className="text-3xl font-bold text-gray-800">Latest News & Recognition</h2>
         <div className="w-24 h-1 bg-[#0D7C66] mx-auto mt-4"/>

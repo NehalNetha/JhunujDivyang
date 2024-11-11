@@ -2,7 +2,7 @@ import React from 'react';
 
 const ChooseYourCause = () => {
   return (
-    <section className="py-20 px-4 md:px-8 max-w-7xl mx-auto">
+    <section className="py-20 px-4 md:px-8 max-w-7xl mx-auto" id="mission">
       <div className="grid md:grid-cols-2 gap-12 items-center">
         {/* Left Content */}
         <div className="space-y-6">
@@ -13,7 +13,7 @@ const ChooseYourCause = () => {
           <p className="text-gray-600 text-lg">
           To empower and uplift disabled individuals by providing comprehensive support,
            skill development, and community integration opportunities. 
-           Jhunja Divyang Institute and Training Center is dedicated to fostering self-reliance, 
+           Zunj Divyang Institute and Training Center is dedicated to fostering self-reliance, 
            social inclusion, and economic independence for disabled individuals across Maharashtra,
            with a steadfast commitment to promoting equal opportunities and enriching lives.
           </p>

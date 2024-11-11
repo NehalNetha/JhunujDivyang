@@ -14,7 +14,7 @@ const Footer = () => {
               <span className="text-2xl font-bold">Helpus.co</span>
             </div>
             <p className="text-gray-200">
-              Jhunuj Divyang Foundation is an NGO to uplift handicapped individuals. 
+              Zunj Divyang Foundation is an NGO to uplift handicapped individuals. 
             </p>
             <div className="flex space-x-4">
               <Link href="#" className="hover:text-gray-300">
@@ -51,7 +51,7 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto mt-12 pt-8 border-t border-emerald-600">
         <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           <div>
-            <p>&copy; {currentYear} Jhunuj Divyang Foundation.</p>
+            <p>&copy; {currentYear} Zunj Divyang Foundation.</p>
           </div>
           <div className="flex space-x-6">
             <Phone />
